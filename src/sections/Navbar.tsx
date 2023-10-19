@@ -3,16 +3,11 @@ import styled from "styled-components";
 import Logo from "../components/Logo";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
-type MenuLink = {
-  label: string;
-  link: string;
-  icon: JSX.Element;
-};
-
-type DropdownMenu = {
-  label: string;
-  menus: MenuLink[];
-};
+import { FiChevronDown } from "react-icons/fi";
+import { CgWebsite } from "react-icons/cg";
+import { BsGithub } from "react-icons/bs";
+import { FaRegFilePdf } from "react-icons/fa";
+import CV from "../assets/LO_Justine_CV.pdf";
 
 const NavbarContainer = styled.nav`
   position: relative;
@@ -37,7 +32,7 @@ const Topbar = styled.div`
   box-sizing: border-box;
 
   &.menu-open {
-    background-color: white;
+    background-color: #f5f6f7;
     color: var(--secondary);
   }
 `;
@@ -71,14 +66,57 @@ const MenuButton = styled.button`
 `;
 
 const MenuContent = styled.div`
-  background-color: white;
+  background-color: #f5f6f7;
   width: 100%;
 `;
 
 const Navlink = styled.div`
-  padding: 10px 20px;
+  padding: 20px 20px;
   font-size: 16px;
-  border-top: 1px solid var(--light-grey);
+  border-top: 1px solid #e2ebf2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  svg {
+    font-size: 22px;
+  }
+
+  &.dropdown-open {
+    color: #0078bd;
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+`;
+
+const Dropdown = styled.div`
+  border-top: 1px solid #e2ebf2;
+  padding: 5px 0;
+  background-color: white;
+`;
+
+const DropdownLink = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 40px;
+  background-color: white;
+  cursor: pointer;
+`;
+
+const Icon = styled.div<{ backgroundColor: string }>`
+  background-color: ${(props) => props.backgroundColor};
+  border-radius: 50%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    font-size: 16px;
+  }
 `;
 
 const Navbar: React.FC = () => {
@@ -88,6 +126,10 @@ const Navbar: React.FC = () => {
   function handleMenuClick() {
     setIsMenuOpen(!isMenuOpen);
     setIsDropdownOpen(false);
+  }
+
+  function handleDropdownClick() {
+    setIsDropdownOpen(!isDropdownOpen);
   }
 
   return (
@@ -103,8 +145,51 @@ const Navbar: React.FC = () => {
       </Topbar>
       {isMenuOpen && (
         <MenuContent>
-          <Navlink>A propos</Navlink>
-          <Navlink>Contact</Navlink>
+          <Navlink
+            onClick={handleDropdownClick}
+            className={isDropdownOpen ? "dropdown-open" : ""}
+          >
+            A propos <FiChevronDown />
+          </Navlink>
+          {isDropdownOpen && (
+            <Dropdown>
+              <DropdownLink
+                href="https://justinelo.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon backgroundColor="#B3DDFF">
+                  <CgWebsite />
+                </Icon>
+                Portfolio
+              </DropdownLink>
+              <DropdownLink
+                href="https://github.com/JustineLo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon backgroundColor="#F9C3BC">
+                  <BsGithub />
+                </Icon>
+                Github
+              </DropdownLink>
+              <DropdownLink
+                href={CV}
+                download="LO_Justine_CV.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Icon backgroundColor="#B8A9F5">
+                  <FaRegFilePdf />
+                </Icon>
+                CV
+              </DropdownLink>
+            </Dropdown>
+          )}
+
+          <Navlink>
+            <a href="mailto:justine.lo.pro@gmail.com">Contact</a>
+          </Navlink>
         </MenuContent>
       )}
     </NavbarContainer>
