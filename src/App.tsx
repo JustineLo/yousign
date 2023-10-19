@@ -1,4 +1,5 @@
 import Header from "./sections/Header";
+import Introduction from "./sections/Introduction";
 import Navbar from "./sections/Navbar";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <Navbar />
       <Header />
+      <Introduction />
     </>
   );
 }
