@@ -13,7 +13,7 @@ const Container = styled.div`
   gap: 40px;
 
   @media (min-width: 768px) {
-    padding: 80px 20vw;
+    padding: 150px 20vw;
     flex-direction: row;
   }
 `;

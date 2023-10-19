@@ -17,10 +17,24 @@ const NavbarContainer = styled.nav`
   z-index: 20;
   width: 100%;
   background-color: var(--secondary);
+  transition: all 0.2s ease-in-out;
+
+  &.menu-open {
+    background-color: var(--light-grey);
+  }
 
   @media (min-width: 768px) {
     display: flex;
+    flex-direction: row;
     padding: 0 20vw;
+
+    &:hover {
+      background-color: var(--light-grey);
+
+      a {
+        color: var(--secondary);
+      }
+    }
   }
 `;
 
@@ -30,16 +44,16 @@ const Topbar = styled.div`
   align-items: center;
   width: 100%;
   padding: 20px;
-  background-color: var(--secondary);
+  background-color: transparent;
   box-sizing: border-box;
 
   &.menu-open {
-    background-color: var(--light-grey);
     color: var(--secondary);
   }
 
   @media (min-width: 768px) {
     padding: 20px 0;
+    width: auto;
   }
 `;
 
@@ -79,6 +93,13 @@ const MenuContent = styled.div`
     width: 100%;
     height: 90vh;
   }
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    color: white;
+    padding-left: 10px;
+  }
 `;
 
 const Navlink = styled.div`
@@ -98,6 +119,18 @@ const Navlink = styled.div`
     color: #0078bd;
     svg {
       transform: rotate(180deg);
+    }
+  }
+
+  @media (min-width: 768px) {
+    border: none;
+    color: #b6d2e3;
+    justify-content: start;
+    align-items: center;
+    gap: 6px;
+
+    &.is-hovered {
+      color: var(--secondary);
     }
   }
 `;
@@ -133,6 +166,7 @@ const Icon = styled.div<{ backgroundColor: string }>`
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
   function handleMenuClick() {
     setIsMenuOpen(!isMenuOpen);
@@ -144,9 +178,13 @@ const Navbar: React.FC = () => {
   }
 
   return (
-    <NavbarContainer>
+    <NavbarContainer
+      className={isMenuOpen ? "menu-open" : ""}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <Topbar className={isMenuOpen ? "menu-open" : ""}>
-        <Logo dark={isMenuOpen} />
+        <Logo dark={isMenuOpen || isHovered} />
         <MenuButton
           onClick={handleMenuClick}
           className={isMenuOpen ? "menu-open" : ""}
@@ -158,7 +196,9 @@ const Navbar: React.FC = () => {
       <MenuContent className={isMenuOpen ? "menu-open" : ""}>
         <Navlink
           onClick={handleDropdownClick}
-          className={isDropdownOpen ? "dropdown-open" : ""}
+          className={`${isDropdownOpen ? "dropdown-open" : ""} ${
+            isHovered ? "is-hovered" : ""
+          }`}
         >
           A propos <FiChevronDown />
         </Navlink>
