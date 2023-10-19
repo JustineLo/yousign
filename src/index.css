@@ -1,0 +1,86 @@
+@font-face {
+  font-family: "Recoleta";
+  src: url("./assets/fonts/Recoleta-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "URW Geometry";
+  src: url("./assets/fonts/URWGeometricRegular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 600;
+}
+
+:root {
+  --primary: #5de8c1;
+  --secondary: #002B44;
+  --light-grey: #f6f7ff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+a:visited {
+  color: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  color: var(--secondary);
+  font-family: "URW Geometry", sans-serif;
+  font-size: 16px;
+  line-height: 155%;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 46px;
+  font-family: "Recoleta", sans-serif;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 46px;
+  font-family: "Recoleta", sans-serif;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 50px;
+    line-height: 60px;
+  }
+}
