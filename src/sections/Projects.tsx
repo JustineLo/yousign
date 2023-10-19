@@ -43,33 +43,38 @@ const Title = styled.h1`
   color: white;
 `;
 
-const Cards = styled.div`
+const MobileCards = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 40px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 60px;
   @media (min-width: 768px) {
-    gap: 80px;
+    display: none;
   }
 `;
 
 const ArrowButton = styled.button`
-  background: none;
-  border: none;
-  color: white;
-  font-size: 30px;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  transition: background-color 0.2s ease-in-out;
+  display: none;
+  @media (min-width: 768px) {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    transition: background-color 0.2s ease-in-out;
 
-  &:hover {
-    background-color: var(--primary);
+    &:hover {
+      background-color: var(--primary);
+    }
   }
 `;
 
@@ -108,12 +113,32 @@ const projects = [
 ];
 
 const AnimatedCard = styled.div`
-  &.fade-in {
-    animation: ${fadeIn} 0.5s ease-in-out forwards;
-  }
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    &.fade-in {
+      animation: ${fadeIn} 0.5s ease-in-out forwards;
+    }
 
-  &.fade-out {
-    animation: ${fadeOut} 0.5s ease-in-out forwards;
+    &.fade-out {
+      animation: ${fadeOut} 0.5s ease-in-out forwards;
+    }
+  }
+`;
+
+const DesktopCards = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  @media (min-width: 768px) {
+    margin-top: 0;
+    flex-direction: row;
+    gap: 80px;
   }
 `;
 
@@ -150,7 +175,12 @@ function Projects() {
   return (
     <Container id="projects">
       <Title>Quelques projets...</Title>
-      <Cards>
+      <MobileCards>
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </MobileCards>
+      <DesktopCards>
         <ArrowButton onClick={handlePrev}>
           <HiOutlineChevronLeft />
         </ArrowButton>
@@ -160,7 +190,7 @@ function Projects() {
         <ArrowButton onClick={handleNext}>
           <HiOutlineChevronRight />
         </ArrowButton>
-      </Cards>
+      </DesktopCards>
     </Container>
   );
 }
