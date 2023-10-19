@@ -10,22 +10,24 @@ const Container = styled.div`
   padding: 150px 30px 40px 30px;
   box-sizing: border-box;
   width: 100%;
-  gap: 120px;
+  gap: 80px;
 
   @media (min-width: 768px) {
     padding: 150px 20vw;
+    gap: 120px;
   }
 `;
 
 const Content = styled.div`
   box-sizing: border-box;
-
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  gap: 40px;
 
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
+    gap: 0;
   }
 `;
 
@@ -50,6 +52,7 @@ const Text = styled.div`
 
 const Image = styled.div`
   img {
+    max-width: 100%;
   }
 
   @media (min-width: 768px) {
