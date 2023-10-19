@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Recoleta";
-  src: url("./assets/fonts/Recoleta-Regular.otf") format("opentype");
+  src: url("./assets/fonts/Recoleta-Regular.ttf") format("truetype");
   font-style: normal;
   font-weight: 600;
 }
@@ -15,7 +15,7 @@
 :root {
   --primary: #5de8c1;
   --secondary: #002b44;
-  --light-grey: #f6f7ff;
+  --light-grey: #f5f6f7;
 }
 
 a {

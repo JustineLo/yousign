@@ -32,7 +32,7 @@ const Topbar = styled.div`
   box-sizing: border-box;
 
   &.menu-open {
-    background-color: #f5f6f7;
+    background-color: var(--light-grey);
     color: var(--secondary);
   }
 `;
@@ -66,7 +66,7 @@ const MenuButton = styled.button`
 `;
 
 const MenuContent = styled.div`
-  background-color: #f5f6f7;
+  background-color: var(--light-grey);
   width: 100%;
 `;
 
