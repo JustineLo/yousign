@@ -1,3 +1,4 @@
+import AboutMe from "./sections/AboutMe";
 import Header from "./sections/Header";
 import Introduction from "./sections/Introduction";
 import Navbar from "./sections/Navbar";
@@ -9,6 +10,7 @@ function App() {
       <Navbar />
       <Header />
       <Introduction />
+      <AboutMe />
       <Projects />
     </>
   );
