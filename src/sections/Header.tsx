@@ -42,11 +42,22 @@ const Buttons = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 28px;
+  }
 `;
 
 const Image = styled.div`
   img {
     width: 360px;
+  }
+
+  @media (min-width: 768px) {
+    img {
+      width: 510px;
+    }
   }
 `;
 
@@ -55,25 +66,18 @@ function Header() {
     <>
       <Container>
         <Text>
-          <h1>
-            Développeuse passionnée prête à enrichir les solutions intelligentes
-            pour les administrations de demain.
-          </h1>
-          <p>
-            Mes compétences en Typescript et React contribueront à la création
-            d'outils innovants pour optimiser l'efficacité et la transparence
-            des administrations, tout en garantissant l’intégrité des données
-            des collectivités.
-          </p>
+          <h1></h1>
+          <p></p>
+          <Buttons>
+            <CTAButton href="mailto:justine.lo.pro@gmail.com">
+              Prendre rendez-vous
+            </CTAButton>
+            <CTAButton href="https://justinelo.dev" secondary={true}>
+              Voir le portfolio
+            </CTAButton>
+          </Buttons>
         </Text>
-        <Buttons>
-          <CTAButton href="mailto:justine.lo.pro@gmail.com">
-            Prendre rendez-vous
-          </CTAButton>
-          <CTAButton href="https://justinelo.dev" secondary={true}>
-            Voir le portfolio
-          </CTAButton>
-        </Buttons>
+
         <Image>
           <img src={headerimage} alt="Justine" />
         </Image>
