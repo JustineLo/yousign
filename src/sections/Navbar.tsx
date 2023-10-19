@@ -110,9 +110,11 @@ const Navlink = styled.div`
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
 
   svg {
     font-size: 22px;
+    transition: all 0.2s ease-in-out;
   }
 
   &.dropdown-open {
@@ -132,6 +134,13 @@ const Navlink = styled.div`
     &.is-hovered {
       color: var(--secondary);
     }
+
+    &:hover {
+      color: #0078bd;
+      svg {
+        transform: rotate(180deg);
+      }
+    }
   }
 `;
 
@@ -139,6 +148,17 @@ const Dropdown = styled.div`
   border-top: 1px solid #e2ebf2;
   padding: 5px 0;
   background-color: white;
+
+  @media (min-width: 768px) {
+    display: flex;
+    gap: 5px;
+    padding: 50px 20vw;
+    border: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+  }
 `;
 
 const DropdownLink = styled.a`
@@ -147,7 +167,32 @@ const DropdownLink = styled.a`
   gap: 8px;
   padding: 20px 40px;
   background-color: white;
+  color: var(--secondary);
   cursor: pointer;
+`;
+
+const Title = styled.div`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 20px 40px;
+    color: var(--secondary);
+
+    p {
+      color: var(--grey);
+    }
+  }
+`;
+
+const Links = styled.div`
+  color: var(--secondary);
+
+  @media (min-width: 768px) {
+    border-left: 1px solid #e2ebf2;
+  }
 `;
 
 const Icon = styled.div<{ backgroundColor: string }>`
@@ -166,7 +211,8 @@ const Icon = styled.div<{ backgroundColor: string }>`
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [isNavbarHovered, setIsNavbarHovered] = useState<boolean>(false);
+  const [isLinkHovered, setIsLinkHovered] = useState<boolean>(false);
 
   function handleMenuClick() {
     setIsMenuOpen(!isMenuOpen);
@@ -180,11 +226,11 @@ const Navbar: React.FC = () => {
   return (
     <NavbarContainer
       className={isMenuOpen ? "menu-open" : ""}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => setIsNavbarHovered(true)}
+      onMouseLeave={() => setIsNavbarHovered(false)}
     >
       <Topbar className={isMenuOpen ? "menu-open" : ""}>
-        <Logo dark={isMenuOpen || isHovered} />
+        <Logo dark={isMenuOpen || isNavbarHovered} />
         <MenuButton
           onClick={handleMenuClick}
           className={isMenuOpen ? "menu-open" : ""}
@@ -194,50 +240,60 @@ const Navbar: React.FC = () => {
       </Topbar>
 
       <MenuContent className={isMenuOpen ? "menu-open" : ""}>
-        <Navlink
-          onClick={handleDropdownClick}
-          className={`${isDropdownOpen ? "dropdown-open" : ""} ${
-            isHovered ? "is-hovered" : ""
-          }`}
+        <div
+          onMouseEnter={() => setIsLinkHovered(true)}
+          onMouseLeave={() => setIsLinkHovered(false)}
         >
-          A propos <FiChevronDown />
-        </Navlink>
-        {isDropdownOpen && (
-          <Dropdown>
-            <DropdownLink
-              href="https://justinelo.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon backgroundColor="#B3DDFF">
-                <CgWebsite />
-              </Icon>
-              Portfolio
-            </DropdownLink>
-            <DropdownLink
-              href="https://github.com/JustineLo"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon backgroundColor="#F9C3BC">
-                <BsGithub />
-              </Icon>
-              Github
-            </DropdownLink>
-            <DropdownLink
-              href={CV}
-              download="LO_Justine_CV.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Icon backgroundColor="#B8A9F5">
-                <FaRegFilePdf />
-              </Icon>
-              CV
-            </DropdownLink>
-          </Dropdown>
-        )}
-
+          <Navlink
+            onClick={handleDropdownClick}
+            className={`${isDropdownOpen ? "dropdown-open" : ""} ${
+              isNavbarHovered ? "is-hovered" : ""
+            }`}
+          >
+            A propos <FiChevronDown />
+          </Navlink>
+          {(isDropdownOpen || isLinkHovered) && (
+            <Dropdown>
+              <Title>
+                <h2>A propos</h2>
+                <p>Pour en savoir plus sur qui je suis {":)"}</p>
+              </Title>
+              <Links>
+                <DropdownLink
+                  href="https://justinelo.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon backgroundColor="#B3DDFF">
+                    <CgWebsite />
+                  </Icon>
+                  Portfolio
+                </DropdownLink>
+                <DropdownLink
+                  href="https://github.com/JustineLo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon backgroundColor="#F9C3BC">
+                    <BsGithub />
+                  </Icon>
+                  Github
+                </DropdownLink>
+                <DropdownLink
+                  href={CV}
+                  download="LO_Justine_CV.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon backgroundColor="#B8A9F5">
+                    <FaRegFilePdf />
+                  </Icon>
+                  CV
+                </DropdownLink>
+              </Links>
+            </Dropdown>
+          )}
+        </div>
         <Navlink>
           <a href="mailto:justine.lo.pro@gmail.com">Contact</a>
         </Navlink>

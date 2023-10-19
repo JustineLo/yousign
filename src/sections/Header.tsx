@@ -29,7 +29,7 @@ const Text = styled.div`
     margin-bottom: 5px;
     font-size: 16px;
     line-height: 30px;
-    color: #cfcfcfff;
+    color: var(--grey);
   }
 
   @media (min-width: 768px) {
