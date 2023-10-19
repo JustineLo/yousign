@@ -6,6 +6,8 @@ import mgb from "./../assets/projects/mgb.png";
 import ProjectCard from "../components/ProjectCard";
 import { useEffect, useState } from "react";
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
+import CTAButton from "../components/CTAButton";
+import ArrowImg from "../components/ArrowImg";
 
 const fadeIn = keyframes`
   from {
@@ -29,10 +31,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 150px 30px 40px 30px;
+  padding: 150px 30px 100px 30px;
   gap: 20px;
   background-color: var(--secondary);
-
+  position: relative;
   @media (min-width: 768px) {
     padding: 150px 20vw;
     gap: 120px;
@@ -142,6 +144,21 @@ const DesktopCards = styled.div`
   }
 `;
 
+const Button = styled.div`
+  display: flex;
+  gap: 50px;
+  position: relative;
+  img {
+    display: none;
+    @media (min-width: 768px) {
+      display: block;
+      position: absolute;
+      left: 220px;
+      top: -30px;
+    }
+  }
+`;
+
 function Projects() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animationClass, setAnimationClass] = useState("fade-in");
@@ -191,6 +208,10 @@ function Projects() {
           <HiOutlineChevronRight />
         </ArrowButton>
       </DesktopCards>
+      <Button>
+        <CTAButton href="https://justinelo.dev">Voir mon portfolio</CTAButton>
+        <ArrowImg />
+      </Button>
     </Container>
   );
 }

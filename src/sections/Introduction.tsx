@@ -71,8 +71,8 @@ function Introduction() {
         </p>
         <p>
           Ce site codé par mes dix petits doigts existe pour vous montrer
-          sobrement mon extrême motivation à rejoindre Foxintelligence. Même si
-          son potentiel SEO est indéniable, il n’a aucunement l’ambition de
+          sobrement mon extrême motivation à rejoindre Yousign. Même si son
+          potentiel SEO est indéniable, il n’a aucunement l’ambition de
           concurrencer le site officiel.
         </p>
       </Text>
