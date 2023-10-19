@@ -144,6 +144,14 @@ const Navlink = styled.div`
   }
 `;
 
+const Links = styled.div`
+  color: var(--secondary);
+
+  @media (min-width: 768px) {
+    border-left: 1px solid #e2ebf2;
+  }
+`;
+
 const Dropdown = styled.div`
   border-top: 1px solid #e2ebf2;
   padding: 5px 0;
@@ -161,14 +169,38 @@ const Dropdown = styled.div`
   }
 `;
 
-const DropdownLink = styled.a`
+const Icon = styled.div<{ backgroundColor: string }>`
+  background-color: ${(props) => props.backgroundColor};
+  border-radius: 50%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    font-size: 16px;
+  }
+`;
+
+const DropdownLink = styled.a<{ backgroundColor: string }>`
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-left: 20px;
   padding: 20px 40px;
   background-color: white;
   color: var(--secondary);
+  border-radius: 10px;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: ${(props) => props.backgroundColor};
+
+    ${Icon} {
+      background-color: white;
+    }
+  }
 `;
 
 const Title = styled.div`
@@ -184,27 +216,6 @@ const Title = styled.div`
     p {
       color: var(--grey);
     }
-  }
-`;
-
-const Links = styled.div`
-  color: var(--secondary);
-
-  @media (min-width: 768px) {
-    border-left: 1px solid #e2ebf2;
-  }
-`;
-
-const Icon = styled.div<{ backgroundColor: string }>`
-  background-color: ${(props) => props.backgroundColor};
-  border-radius: 50%;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    font-size: 16px;
   }
 `;
 
@@ -263,6 +274,7 @@ const Navbar: React.FC = () => {
                   href="https://justinelo.dev"
                   target="_blank"
                   rel="noopener noreferrer"
+                  backgroundColor="#B3DDFF"
                 >
                   <Icon backgroundColor="#B3DDFF">
                     <CgWebsite />
@@ -273,6 +285,7 @@ const Navbar: React.FC = () => {
                   href="https://github.com/JustineLo"
                   target="_blank"
                   rel="noopener noreferrer"
+                  backgroundColor="#F9C3BC"
                 >
                   <Icon backgroundColor="#F9C3BC">
                     <BsGithub />
@@ -284,6 +297,7 @@ const Navbar: React.FC = () => {
                   download="LO_Justine_CV.pdf"
                   target="_blank"
                   rel="noreferrer"
+                  backgroundColor="#B8A9F5"
                 >
                   <Icon backgroundColor="#B8A9F5">
                     <FaRegFilePdf />
