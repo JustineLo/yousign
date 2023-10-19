@@ -7,7 +7,7 @@ const Container = styled.div`
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 40px 30px;
+  padding: 150px 30px 40px 30px;
   box-sizing: border-box;
   width: 100%;
   gap: 40px;

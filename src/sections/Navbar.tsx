@@ -10,11 +10,13 @@ import { FaRegFilePdf } from "react-icons/fa";
 import CV from "../assets/LO_Justine_CV.pdf";
 
 const NavbarContainer = styled.nav`
-  position: relative;
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 20;
+  width: 100%;
+  background-color: var(--secondary);
 
   @media (min-width: 768px) {
     display: flex;
@@ -34,6 +36,10 @@ const Topbar = styled.div`
   &.menu-open {
     background-color: var(--light-grey);
     color: var(--secondary);
+  }
+
+  @media (min-width: 768px) {
+    padding: 20px 0;
   }
 `;
 
@@ -66,8 +72,13 @@ const MenuButton = styled.button`
 `;
 
 const MenuContent = styled.div`
-  background-color: var(--light-grey);
-  width: 100%;
+  display: none;
+  &.menu-open {
+    display: block;
+    background-color: var(--light-grey);
+    width: 100%;
+    height: 90vh;
+  }
 `;
 
 const Navlink = styled.div`
@@ -143,55 +154,54 @@ const Navbar: React.FC = () => {
           {isMenuOpen ? <AiOutlineClose /> : <GiHamburgerMenu />} Menu
         </MenuButton>
       </Topbar>
-      {isMenuOpen && (
-        <MenuContent>
-          <Navlink
-            onClick={handleDropdownClick}
-            className={isDropdownOpen ? "dropdown-open" : ""}
-          >
-            A propos <FiChevronDown />
-          </Navlink>
-          {isDropdownOpen && (
-            <Dropdown>
-              <DropdownLink
-                href="https://justinelo.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon backgroundColor="#B3DDFF">
-                  <CgWebsite />
-                </Icon>
-                Portfolio
-              </DropdownLink>
-              <DropdownLink
-                href="https://github.com/JustineLo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon backgroundColor="#F9C3BC">
-                  <BsGithub />
-                </Icon>
-                Github
-              </DropdownLink>
-              <DropdownLink
-                href={CV}
-                download="LO_Justine_CV.pdf"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Icon backgroundColor="#B8A9F5">
-                  <FaRegFilePdf />
-                </Icon>
-                CV
-              </DropdownLink>
-            </Dropdown>
-          )}
 
-          <Navlink>
-            <a href="mailto:justine.lo.pro@gmail.com">Contact</a>
-          </Navlink>
-        </MenuContent>
-      )}
+      <MenuContent className={isMenuOpen ? "menu-open" : ""}>
+        <Navlink
+          onClick={handleDropdownClick}
+          className={isDropdownOpen ? "dropdown-open" : ""}
+        >
+          A propos <FiChevronDown />
+        </Navlink>
+        {isDropdownOpen && (
+          <Dropdown>
+            <DropdownLink
+              href="https://justinelo.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon backgroundColor="#B3DDFF">
+                <CgWebsite />
+              </Icon>
+              Portfolio
+            </DropdownLink>
+            <DropdownLink
+              href="https://github.com/JustineLo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon backgroundColor="#F9C3BC">
+                <BsGithub />
+              </Icon>
+              Github
+            </DropdownLink>
+            <DropdownLink
+              href={CV}
+              download="LO_Justine_CV.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Icon backgroundColor="#B8A9F5">
+                <FaRegFilePdf />
+              </Icon>
+              CV
+            </DropdownLink>
+          </Dropdown>
+        )}
+
+        <Navlink>
+          <a href="mailto:justine.lo.pro@gmail.com">Contact</a>
+        </Navlink>
+      </MenuContent>
     </NavbarContainer>
   );
 };
