@@ -1,6 +1,7 @@
 import Header from "./sections/Header";
 import Introduction from "./sections/Introduction";
 import Navbar from "./sections/Navbar";
+import Projects from "./sections/Projects";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
       <Header />
       <Introduction />
+      <Projects />
     </>
   );
 }
