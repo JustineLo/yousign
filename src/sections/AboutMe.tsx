@@ -80,7 +80,7 @@ function AboutMe() {
               2 Projets informatiques et Stratégie d’entreprise, puis
               apprentissage autodidacte de React, puis une alternance de deux
               ans dans une start-up en pleine croissance. Là-bas, je me suis
-              spécialisée en
+              spécialisée en{" "}
               <strong>Typescript, PHP Symfony, Graphql, et SQL</strong>.
             </p>
 

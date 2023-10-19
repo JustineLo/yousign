@@ -1,4 +1,5 @@
 import AboutMe from "./sections/AboutMe";
+import Footer from "./sections/Footer";
 import Header from "./sections/Header";
 import Introduction from "./sections/Introduction";
 import Navbar from "./sections/Navbar";
@@ -12,6 +13,7 @@ function App() {
       <Introduction />
       <AboutMe />
       <Projects />
+      <Footer />
     </>
   );
 }
