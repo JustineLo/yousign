@@ -86,7 +86,7 @@ function Header() {
           <p>
             Ou du moins, elle en rêve. Dans tous les cas, elle adore coder, est
             toujours prête à mettre les mains dans le cambouis et elle tenait à
-            vous le faire savoir.
+            vous le dire.
           </p>
           <Buttons>
             <CTAButton href="mailto:justine.lo.pro@gmail.com">
