@@ -4,6 +4,7 @@ import Header from "./sections/Header";
 import Introduction from "./sections/Introduction";
 import Navbar from "./sections/Navbar";
 import Projects from "./sections/Projects";
+import Stack from "./sections/Stack";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Header />
       <Introduction />
       <AboutMe />
+      <Stack />
       <Projects />
       <Footer />
     </>

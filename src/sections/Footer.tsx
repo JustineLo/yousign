@@ -41,9 +41,10 @@ const Links = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
+    transition: color 0.2s ease-in-out;
 
     &:hover {
-      color: var(--primary);
+      color: var(--grey);
     }
   }
 `;
