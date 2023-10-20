@@ -5,6 +5,7 @@ import Introduction from "./sections/Introduction";
 import Navbar from "./sections/Navbar";
 import Projects from "./sections/Projects";
 import Stack from "./sections/Stack";
+import WhyWorkHere from "./sections/WhyWorkHere";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <Header />
       <Introduction />
+      <WhyWorkHere />
       <AboutMe />
       <Stack />
       <Projects />

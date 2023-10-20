@@ -5,6 +5,7 @@
   font-weight: normal;
 }
 
+
 @font-face {
   font-family: "Recoleta";
   src: url("./assets/fonts/Recoleta-Bold.ttf") format("truetype");
@@ -78,7 +79,7 @@ h4 {
 
 h1 {
   font-size: 36px;
-  font-weight: 600;
+  font-weight: normal;
   line-height: 46px;
   font-family: "Recoleta", sans-serif;
 }

@@ -267,7 +267,7 @@ const Navbar: React.FC = () => {
             <Dropdown>
               <Title>
                 <h2>A propos</h2>
-                <p>Pour en savoir plus sur qui je suis {":)"}</p>
+                <p>Découvrez qui je suis {":)"}</p>
               </Title>
               <Links>
                 <DropdownLink
