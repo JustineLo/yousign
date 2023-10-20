@@ -18,6 +18,7 @@ const Container = styled.div`
   height: 100%;
   position: relative;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  padding-bottom: 20px;
 
   @media (min-width: 768px) {
     justify-content: start;

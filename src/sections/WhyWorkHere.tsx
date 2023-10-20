@@ -17,7 +17,7 @@ const content = [
   {
     title: "Mission-Driven",
     image: "🌍",
-    text: "Ayant précédemment travaillé dans une entreprise dans le secteur de l'écologie, je suis passionnée par l'utilisation de la technologie pour créer des produits à fort impact. C'est pourquoi la mission de Yousign résonne avec moi et je serais ravie de continuer à utiliser mes compétences pour travailler sur des projets qui ont du sens.",
+    text: "Ayant précédemment travaillé dans une entreprise dans le secteur de l'écologie, je suis passionnée par l'utilisation de la technologie pour créer des produits à fort impact. C'est pourquoi la mission de Yousign résonne avec moi et je serais ravie de continuer à utiliser mes compétences sur des projets qui ont du sens.",
     color: "#1ED6A3",
   },
 ];
